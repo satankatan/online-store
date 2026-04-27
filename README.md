@@ -1,11 +1,11 @@
 Сначала создай и активируй виртуальное окружение командами\
 **python3 -m venv env**\
-**source env/bin/activate**\
+**source env/bin/activate**
 
 Далее установи зависимости которые у тебя подсвечиваются, возможно достаточно будет использовать команду\
-**pip3 install pydantic fastapi uvicorn**\
+**pip3 install pydantic fastapi uvicorn**
 
 Для запуска введи в терминале команду\
-**python3 main.py**\
+**python3 main.py**
 
-А после перейди в finder и просто дважды щёлкни по **index.html**\
+А после перейди в finder и просто дважды щёлкни по **index.html**
