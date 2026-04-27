@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Muse - Магазин одежды</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <a href="#home" class="logo" data-route>
+          <img class="logo-mark" src="./assets/urban-muse-logo.svg" alt="Urban Muse" />
+          <span>Urban Muse</span>
+        </a>
+        <nav class="nav">
+          <a href="#home" data-route>Главная</a>
+          <a href="#catalog" data-route>Каталог</a>
+          <a href="#about" data-route>О нас</a>
+          <a href="#register" data-route>Регистрация</a>
+          <a href="#login" data-route>Вход</a>
+          <a href="#cart" class="cart-link" data-route>Корзина <span id="cartCount">0</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="home" class="page active">
+        <div class="hero">
+          <span class="badge">Новая коллекция SS26</span>
+          <h1>Стильная одежда для города и отдыха</h1>
+          <p>Трендовые образы, премиальные ткани и доставка по всей стране за 1-3 дня.</p>
+          <a class="btn" href="#catalog" data-route>Перейти в каталог</a>
+        </div>
+        <div class="stats">
+          <article><strong>1800+</strong><span>моделей одежды</span></article>
+          <article><strong>24ч</strong><span>быстрая отправка</span></article>
+          <article><strong>4.9/5</strong><span>оценка клиентов</span></article>
+        </div>
+        <div class="collections">
+          <article class="collection-card">
+            <h3>Casual</h3>
+            <p>Базовые образы на каждый день</p>
+          </article>
+          <article class="collection-card">
+            <h3>Streetwear</h3>
+            <p>Уличная мода и свободный крой</p>
+          </article>
+          <article class="collection-card">
+            <h3>Premium</h3>
+            <p>Минимализм и премиальные материалы</p>
+          </article>
+        </div>
+        <div class="promo-banner">
+          <div>
+            <p class="promo-kicker">Urban Muse Studio</p>
+            <h2>Собери капсульный гардероб за 10 минут</h2>
+            <p>Готовые сочетания вещей от стилистов: от офиса до уикенда.</p>
+            <a class="btn" href="#catalog" data-route>Смотреть подборку</a>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=80"
+            alt="Модель в модной одежде"
+          />
+        </div>
+        <div class="lookbook">
+          <article>
+            <img
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+              alt="Lookbook образ 1"
+            />
+          </article>
+          <article>
+            <img
+              src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80"
+              alt="Lookbook образ 2"
+            />
+          </article>
+          <article>
+            <img
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80"
+              alt="Lookbook образ 3"
+            />
+          </article>
+        </div>
+        <div class="newsletter">
+          <h3>Скидка 10% за подписку</h3>
+          <p>Получай новости о дропах и закрытых распродажах первым.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Введите email" />
+            <button class="btn" type="button">Подписаться</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="catalog" class="page">
+        <div class="page-head">
+          <h2>Каталог</h2>
+          <input id="searchInput" type="search" placeholder="Поиск одежды..." />
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="outerwear">Верхняя одежда</button>
+          <button class="filter-btn" data-filter="tops">Верх</button>
+          <button class="filter-btn" data-filter="bottoms">Низ</button>
+          <button class="filter-btn" data-filter="shoes">Обувь</button>
+        </div>
+        <div id="productsGrid" class="products-grid"></div>
+      </section>
+
+      <section id="product" class="page">
+        <button class="link-btn" id="backToCatalog">← Назад в каталог</button>
+        <div id="productDetails" class="product-details"></div>
+      </section>
+
+      <section id="cart" class="page">
+        <h2>Корзина</h2>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-summary">
+          <p>Итого: <strong id="cartTotal">0 ₽</strong></p>
+          <button class="btn" id="checkoutBtn">Оформить заказ</button>
+        </div>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Доставка</h3>
+            <p>Доставка по России 1–3 дня. Сборка заказа обычно занимает до 24 часов.</p>
+            <ul class="nice-list">
+              <li>Курьер / пункт выдачи</li>
+              <li>Уведомления о статусе</li>
+              <li>Упаковка без лишнего пластика</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3>Возврат и обмен</h3>
+            <p>Если размер не подошёл — оформим обмен. Если передумали — поможем с возвратом.</p>
+            <ul class="nice-list">
+              <li>7 дней на примерку</li>
+              <li>Обмен на другой размер</li>
+              <li>Поддержка на каждом шаге</li>
+            </ul>
+          </article>
+          <article class="info-card">
+            <h3>Оплата</h3>
+            <p>На странице оформления доступна оплата картой, СБП или при получении.</p>
+            <div class="trust-badges">
+              <span class="trust">SSL</span>
+              <span class="trust">3‑D Secure</span>
+              <span class="trust">SBP</span>
+              <span class="trust">COD</span>
+            </div>
+            <p class="muted">Данные карты защищены и обрабатываются безопасно.</p>
+          </article>
+        </div>
+        <div class="faq">
+          <h3>Частые вопросы</h3>
+          <details>
+            <summary>Как выбрать размер?</summary>
+            <p>Ориентируйся на привычный размер и посадку в описании. Если сомневаешься — бери на размер больше для oversize.</p>
+          </details>
+          <details>
+            <summary>Можно ли изменить заказ после оформления?</summary>
+            <p>Если заказ ещё не отправлен — обычно успеваем изменить адрес или состав. Напишите в поддержку, и мы поможем.</p>
+          </details>
+          <details>
+            <summary>Почему доставка бесплатная?</summary>
+            <p>В этой версии проекта доставка фиксирована как бесплатная, чтобы было проще тестировать интерфейс.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="checkout" class="page">
+        <h2>Оформление заказа</h2>
+        <div class="checkout-layout">
+          <div class="checkout-form">
+            <form id="checkoutForm">
+              <div class="field-row">
+                <label>Имя
+                  <input type="text" name="shipName" required />
+                </label>
+                <label>Телефон
+                  <input type="tel" name="shipPhone" required placeholder="+7 ___ ___-__-__" />
+                </label>
+              </div>
+              <label>Город
+                <input type="text" name="shipCity" required />
+              </label>
+              <label>Адрес
+                <input type="text" name="shipAddress" required placeholder="улица, дом, квартира" />
+              </label>
+
+              <div class="checkout-block">
+                <h3>Способ оплаты</h3>
+                <div class="payment-methods" id="paymentMethods">
+                  <label class="pay-radio">
+                    <input type="radio" name="payMethod" value="card" checked />
+                    <span>Оплата картой</span>
+                  </label>
+                  <label class="pay-radio">
+                    <input type="radio" name="payMethod" value="sbp" />
+                    <span>СБП</span>
+                  </label>
+                  <label class="pay-radio">
+                    <input type="radio" name="payMethod" value="cod" />
+                    <span>При получении</span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="cardFields" class="checkout-block card-fields">
+                <h3>Данные карты</h3>
+                <div class="field-row">
+                  <label>Номер карты
+                    <input type="text" name="cardNumber" inputmode="numeric" required placeholder="0000 0000 0000 0000" />
+                  </label>
+                  <label>Имя на карте
+                    <input type="text" name="cardName" required placeholder="IVAN IVANOV" />
+                  </label>
+                </div>
+                <div class="field-row">
+                  <label>Срок (MM/YY)
+                    <input type="text" name="cardExpiry" required placeholder="12/29" />
+                  </label>
+                  <label>CVC
+                    <input type="text" name="cardCvc" inputmode="numeric" required placeholder="123" />
+                  </label>
+                </div>
+              </div>
+
+              <button class="btn" type="submit">Оплатить и оформить</button>
+            </form>
+            <p id="checkoutMessage" class="message"></p>
+          </div>
+
+          <aside class="checkout-summary">
+            <h3>Состав заказа</h3>
+            <div id="checkoutItems" class="checkout-items"></div>
+            <div class="cart-summary">
+              <p>Итого: <strong id="checkoutTotal">0 ₽</strong></p>
+              <p class="muted">Доставка: бесплатно</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="orderSuccess" class="page">
+        <h2>Оплата прошла успешно</h2>
+        <p>Спасибо за покупку! Номер заказа: <strong id="orderNumber">—</strong></p>
+        <div id="orderMeta" class="product-details"></div>
+        <a class="btn" href="#catalog" data-route>Продолжить покупки</a>
+      </section>
+
+      <section id="register" class="page">
+        <h2>Регистрация</h2>
+        <form id="registerForm" class="auth-form">
+          <label>Имя<input type="text" name="name" required /></label>
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Пароль<input type="password" name="password" minlength="6" required /></label>
+          <button class="btn" type="submit">Создать аккаунт</button>
+        </form>
+        <p id="registerMessage" class="message"></p>
+      </section>
+
+      <section id="login" class="page">
+        <h2>Вход</h2>
+        <form id="loginForm" class="auth-form">
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Пароль<input type="password" name="password" required /></label>
+          <button class="btn" type="submit">Войти</button>
+        </form>
+        <p id="loginMessage" class="message"></p>
+      </section>
+
+      <section id="profile" class="page">
+        <h2>Профиль</h2>
+        <div id="profileCard" class="profile-card"></div>
+      </section>
+
+      <section id="about" class="page">
+        <h2>О магазине</h2>
+        <div class="about-story">
+          <div>
+            <p class="muted">Urban Muse — про спокойный стиль, который живёт дольше одного сезона.</p>
+            <h3>Наша идея</h3>
+            <p>
+              Мы собрали магазин вокруг простого принципа: вещи должны сочетаться между собой, быть удобными и выглядеть актуально.
+              Поэтому коллекции строим как капсулы — чтобы ты мог(ла) собрать образ “с нуля” без лишних покупок.
+            </p>
+            <p>
+              Можно посмотреть каталог, добавить товары в корзину и оформить заказ — всё максимально просто и прозрачно.
+            </p>
+          </div>
+          <img src="./assets/urban-muse-logo.svg" alt="Urban Muse" />
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Доставка по России</h3>
+            <p>Отправляем заказы быстро и отслеживаем маршрут на каждом шаге. Укажите адрес при оформлении — и мы покажем статус в заказе.</p>
+          </div>
+          <div class="about-card">
+            <h3>Возврат и обмен</h3>
+            <p>Если вещь не подошла по размеру или ожиданиям — оформим обмен/возврат по правилам: быстро и без лишних вопросов.</p>
+          </div>
+          <div class="about-card">
+            <h3>Качество тканей</h3>
+            <p>Мы подбираем материалы под сезон и комфорт: хлопок, лён, костюмные ткани, эко-материалы для обуви.</p>
+          </div>
+          <div class="about-card">
+            <h3>Поддержка 7/7</h3>
+            <p>Помогаем с размером, стилем и подбором образа. Напишите нам — ответим быстро.</p>
+          </div>
+        </div>
+
+        <div class="values">
+          <h3>Что для нас важно</h3>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>Честные материалы</h3>
+              <p>Показываем состав и подбираем ткани под сезон: от льна летом до шерсти зимой.</p>
+            </article>
+            <article class="info-card">
+              <h3>Комфорт в деталях</h3>
+              <p>Посадка, длина, манжеты и подкладка — мелочи, которые определяют, “твоя” это вещь или нет.</p>
+            </article>
+            <article class="info-card">
+              <h3>Осознанные покупки</h3>
+              <p>Ставим на капсулы и базовые модели, которые легко комбинировать между собой.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="faq">
+          <h3>FAQ</h3>
+          <details>
+            <summary>Как узнать состав и уход?</summary>
+            <p>В карточке товара есть блоки “Материал” и “Уход”, которые помогают выбрать вещь и правильно за ней ухаживать.</p>
+          </details>
+          <details>
+            <summary>Где посмотреть прошлые заказы?</summary>
+            <p>После оплаты мы присылаем подтверждение и статус доставки. Если что-то нужно уточнить — поддержка поможет.</p>
+          </details>
+          <details>
+            <summary>Это настоящий магазин?</summary>
+            <p>Да — это полноценный интернет‑магазин со стандартным сценарием: каталог → корзина → оформление → оплата.</p>
+          </details>
+        </div>
+
+        <div class="about-contacts">
+          <h3>Контакты</h3>
+          <p><strong>Email:</strong> support@urbanmuse.example</p>
+          <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+          <p class="muted">Мы на связи: поможем с размером, оплатой и доставкой.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Urban Muse. Все права защищены.</p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
